@@ -24,5 +24,25 @@ namespace mouseFocus
         {
             InitializeComponent();
         }
+
+        private void Contact_Select(object send, MouseButtonEventArgs e)
+        {
+            var sender = (UIElement)send;
+            Keyboard.Focus(sender);
+        }
+
+        private void Got_Focus(object send, RoutedEventArgs e)
+        {
+            var sender = (UIElement)send;
+            AdornerLayer.GetAdornerLayer(sender).Add(new FocusAdorner(sender));
+        }
+
+        private void Lost_Focus(object send, RoutedEventArgs e)
+        {
+            var sender = (UIElement)send;
+            var layer = AdornerLayer.GetAdornerLayer(sender);
+            foreach (var adorner in layer.GetAdorners(sender))
+                layer.Remove(adorner);
+        }
     }
 }
