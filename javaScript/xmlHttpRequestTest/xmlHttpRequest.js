@@ -22,6 +22,6 @@ function httpRequest(str){
     request.open('GET', `http://localhost:8080/xmlHttpRequest.php?str=${str}`, true);
     request.send();
     // POSTメソッドで送受信
-    // request.open('POST', 'http://localhost:8080/test.txt', true);
+    // request.open('POST', 'http://localhost:8080/xmlHttpRequest.php', true);
     // request.send();
 }
