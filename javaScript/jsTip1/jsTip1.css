@@ -1,0 +1,88 @@
+.item{
+    display: flex;
+    flex-flow: column;
+    width: 50%;
+    margin: 20px;
+}
+
+.headline{
+    background: #AFEEEE;
+}
+
+#scrollTableView{
+    overflow: auto;
+    height: 150px;
+}
+
+table{
+    text-align: center;
+    margin: 0;
+    border-spacing: 0;
+}
+
+table thead{
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+table tbody{
+    overflow-y: scroll;
+}
+
+table th{
+    background-color: #DDDDDD;
+}
+
+table td{
+    border: solid 1px gray;
+}
+
+#upperLayer{
+    z-index: 1;
+    width: 100%;
+    height: 150px;
+}
+
+#graphPointLabel{
+    display: flex;
+    flex-direction: row;
+}
+
+.graphPoint{
+    margin-top: 20px;
+    margin-right: 50px;
+}
+
+#selectPos{
+    position: relative;
+}
+
+select{
+    width: 30%;
+    margin: 10px;
+}
+
+#openSelectButton{
+    width: 30%;
+    margin: 10px;
+}
+
+#select{
+    -webkit-appearance: none;/* ベンダープレフィックス(Google Chrome、Safari用) */
+    -moz-appearance: none; /* ベンダープレフィックス(Firefox用) */
+    appearance: none;
+    position: absolute;
+    left: 0;
+    top: 61px;
+    height: 26px;
+    background: transparent;
+    border: none;
+}
+
+#select:focus{
+    outline: none;
+}
+
+
+

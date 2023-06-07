@@ -1,0 +1,118 @@
+<html>
+<head>
+    <link rel="stylesheet" href="jsTip1.css">
+    <script src="jsTip1.js"></script>
+    <meta charset="utf-8"> <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="item">
+        <label class="headline">TableのScrollをJavaScript側から操作する</label>
+        <div id="upperLayer"></div>
+        <div id="scrollTableView">
+            <table id="scrollTable">
+                <thead>
+                    <tr>
+                        <th>項目1</th>
+                        <th>項目2</th>
+                        <th>項目3</th>
+                        <th>項目4</th>
+                        <th>項目5</th>
+                        <th>項目6</th>
+                        <th>項目7</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                        <td>e</td>
+                        <td>f</td>
+                        <td>g</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="item">
+        <label class="headline">クリック位置の座標を獲得</label>
+        <div>
+            <canvas id="chart"></canvas>
+        </div>
+        <div id="graphPointLabel">
+            <div class="graphPoint">
+                <label>x座標: </label>
+                <label id="xPoint"></label>
+            </div>
+            <div class="graphPoint">
+                <label>y座標: </label>
+                <label id="yPoint"></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="item" id="selectPos">
+        <label class="headline">selectの表示</label>
+        <select id="normalSelect">
+            <option>フロントエンド</option>
+            <option>バックエンド</option>
+            <option>インフラ</option>
+        </select>
+        <button id="openSelectButton">項目を選択する</button>
+        <select id="select">
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+        </select>
+        <label id="selectContent">選択項目：-</label>
+    </div>
+</body>
+
+</html>
