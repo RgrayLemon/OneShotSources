@@ -5,7 +5,7 @@
     <meta charset="utf-8"> <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
-    <div class="item">
+    <div class="item" id="upperAndTable">
         <label class="headline">TableのScrollをJavaScript側から操作する</label>
         <div id="upperLayer"></div>
         <div id="scrollTableView">
@@ -22,62 +22,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>d</td>
-                        <td>e</td>
-                        <td>f</td>
-                        <td>g</td>
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>d</td>
-                        <td>e</td>
-                        <td>f</td>
-                        <td>g</td>
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>d</td>
-                        <td>e</td>
-                        <td>f</td>
-                        <td>g</td>
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>d</td>
-                        <td>e</td>
-                        <td>f</td>
-                        <td>g</td>
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>d</td>
-                        <td>e</td>
-                        <td>f</td>
-                        <td>g</td>
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>d</td>
-                        <td>e</td>
-                        <td>f</td>
-                        <td>g</td>
-                    </tr>
                 </tbody>
             </table>
+        </div>
+        <div>
+            <button id="upperLayerToggle">上のレイヤー OFF</button>
+        </div>
+    </div>
+
+    <div class="item">
+        <label class="headline">クリック位置のインデックスを取得</label>
+        <div id="graphPointLabel">
+            <div class="graphPoint">
+                <label>y座標: </label>
+                <label id="yTablePoint"></label>
+            </div>
+            <div class="graphPoint">
+                <label>index: </label>
+                <label id="tableIndex"></label>
+            </div>
         </div>
     </div>
 
@@ -95,6 +58,18 @@
                 <label>y座標: </label>
                 <label id="yPoint"></label>
             </div>
+        </div>
+    </div>
+
+    <div class="item">
+        <label class="headline">テーブルの行単位に処理追加</label>
+        <div>
+            <table id="editTable">
+                <tr>
+                    <th>No.</th>
+                    <th>テキスト</th>
+                </tr>
+            </table>
         </div>
     </div>
 

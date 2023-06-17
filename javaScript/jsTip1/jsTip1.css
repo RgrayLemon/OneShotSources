@@ -11,6 +11,7 @@
 
 #scrollTableView{
     overflow: auto;
+    width: 350px;
     height: 150px;
 }
 
@@ -38,10 +39,20 @@ table td{
     border: solid 1px gray;
 }
 
+#upperAndTable{
+    position: relative;
+}
+
 #upperLayer{
+    position: absolute;
+    top: 24px;
     z-index: 1;
-    width: 100%;
+    width: 350px;
     height: 150px;
+}
+
+#upperLayerToggle{
+    margin-top: 20px;
 }
 
 #graphPointLabel{
@@ -52,6 +63,15 @@ table td{
 .graphPoint{
     margin-top: 20px;
     margin-right: 50px;
+}
+
+.editBox{
+    display: flex;
+    flex-direction: row;
+}
+
+.editTextBox{
+    border: none;
 }
 
 #selectPos{

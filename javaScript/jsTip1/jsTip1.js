@@ -2,6 +2,72 @@ let myChart;
 window.addEventListener("load", ()=>{
     drawGraph(0, 0);
 
+    // テーブル作成
+    let scrollTableView = document.getElementById("scrollTableView");
+    for(let i=0;i<16;i++){
+        let row = document.getElementById("scrollTable").tBodies[0].insertRow(-1);
+        row.insertCell(0).appendChild(document.createTextNode(i));
+        row.insertCell(1).appendChild(document.createTextNode("a"));
+        row.insertCell(2).appendChild(document.createTextNode("b"));
+        row.insertCell(3).appendChild(document.createTextNode("c"));
+        row.insertCell(4).appendChild(document.createTextNode("d"));
+        row.insertCell(5).appendChild(document.createTextNode("e"));
+        row.insertCell(6).appendChild(document.createTextNode("f"));
+    }
+
+    let layerToggle = document.getElementById("upperLayerToggle");
+    layerToggle.addEventListener("click", ()=>{
+        if(/ON/.test(layerToggle.innerText)){
+            document.getElementById("upperLayer").style.display = "block";
+            layerToggle.innerText = "上のレイヤー OFF";
+        }
+        else{
+            document.getElementById("upperLayer").style.display = "none";
+            layerToggle.innerText = "上のレイヤー ON";
+        }
+    })
+
+    // 上の要素でクリックして下のテーブルのインデックスを取得
+    document.getElementById("upperLayer").addEventListener("click", (e)=>{
+        let rect = e.target.getBoundingClientRect();
+        let y = e.clientY - rect.top + document.getElementById("scrollTableView").scrollTop;
+        let table = document.getElementById("scrollTable");
+        let index = Math.floor(y / table.tBodies[0].rows[0].offsetHeight) - 1;
+        document.getElementById("yTablePoint").innerText = y;
+        document.getElementById("tableIndex").innerText = index;
+    });
+
+    // 上の要素のスクロールで下のテーブルをスクロール
+    document.getElementById("upperLayer").addEventListener("pointermove", (e)=>{
+        scrollTableView.scrollTop -= e.movementY;
+    });
+
+    // 行単位での処理
+    let editTable = document.getElementById("editTable");
+    for(let i=0;i<6;i++){
+        let row = editTable.insertRow(-1);
+        row.insertCell(0).appendChild(document.createTextNode(i));
+
+        let textBox = document.createElement("input");
+        textBox.setAttribute("type", "text");
+        textBox.setAttribute("class", "editTextBox");
+
+        let deleteButton = document.createElement("button");
+        deleteButton.setAttribute("type", "button")
+        deleteButton.innerText = "×";
+
+        let box = document.createElement("div");
+        box.setAttribute("class", "editBox");
+        box.appendChild(textBox);
+        box.appendChild(deleteButton)
+
+        row.insertCell(1).appendChild(box);
+
+        deleteButton.addEventListener("click", function(){
+            textBox.value = "";
+        });
+    } 
+
     // グラフエリアをクリックして座標取得
     document.getElementById("chart").addEventListener("click", (e)=>{
         let rect = e.target.getBoundingClientRect();
@@ -18,6 +84,7 @@ window.addEventListener("load", ()=>{
         drawGraph(xValue, yValue);
     });
 
+    // 座標表示
     let selectBox = document.getElementById("select");
     selectBox.selectedIndex = -1;
     selectBox.addEventListener("change", ()=>{
@@ -47,7 +114,7 @@ function drawGraph(xValue, yValue){
             },
             scales: {
                 x: {
-                    max: 15, // 軸最大値 30 -> 20にすると文字列が範囲外になる
+                    max: 15, // 軸最大値
                     min: -15, // 軸最小値
                     display: true,
                     ticks: {
