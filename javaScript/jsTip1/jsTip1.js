@@ -46,11 +46,12 @@ window.addEventListener("load", ()=>{
     let editTable = document.getElementById("editTable");
     for(let i=0;i<6;i++){
         let row = editTable.insertRow(-1);
-        row.insertCell(0).appendChild(document.createTextNode(i));
+        row.insertCell(0).appendChild(document.createTextNode(i+1));
 
         let textBox = document.createElement("input");
         textBox.setAttribute("type", "text");
         textBox.setAttribute("class", "editTextBox");
+        textBox.setAttribute("value", `テスト${i+1}`);
 
         let deleteButton = document.createElement("button");
         deleteButton.setAttribute("type", "button")
@@ -66,25 +67,30 @@ window.addEventListener("load", ()=>{
         deleteButton.addEventListener("click", function(){
             textBox.value = "";
         });
-    } 
+    }
 
     // グラフエリアをクリックして座標取得
     document.getElementById("chart").addEventListener("click", (e)=>{
+        // グラフ上における座標
         let rect = e.target.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
+
+        // 座標変換
         let xScale = myChart.scales.x;
         let yScale = myChart.scales.y;
         let xValue = xScale.getValueForPixel(x);
         let yValue = yScale.getValueForPixel(y);
-        // 四捨五入
+
+        // 四捨五入 座標表示
         document.getElementById("xPoint").innerText = Math.round(xValue);
         document.getElementById("yPoint").innerText = Math.round(yValue);
+
+        // クリック位置に点を移動
         if(myChart){ myChart.destroy(); } 
         drawGraph(xValue, yValue);
     });
 
-    // 座標表示
     let selectBox = document.getElementById("select");
     selectBox.selectedIndex = -1;
     selectBox.addEventListener("change", ()=>{
