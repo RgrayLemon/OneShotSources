@@ -1,0 +1,25 @@
+.pageContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 150px;
+    height: 120px;
+    font-size: 28px;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+#movePage2Button{
+    background-color: darkcyan;
+}
+
+#movePage1Button{
+    background-color: darkgoldenrod;
+}
+
