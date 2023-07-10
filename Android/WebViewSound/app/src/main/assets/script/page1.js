@@ -5,7 +5,9 @@ window.addEventListener('load', ()=>{
     document.body.addEventListener("click", function(){
         let audio = document.getElementById("audio");
         audio.load();
-        audio.play();
+        audio.play().catch(function(){
+            // イベント伝搬による多重処理エラーを出力させない
+        });
     });
 
     // 音声再生が終わってから画面遷移させる
