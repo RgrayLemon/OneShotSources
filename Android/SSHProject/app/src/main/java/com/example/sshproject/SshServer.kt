@@ -5,14 +5,16 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.annotation.RequiresApi
-import org.apache.sshd.common.keyprovider.FileKeyPairProvider
 import org.apache.sshd.common.util.security.bouncycastle.BouncyCastleGeneratorHostKeyProvider
 import org.apache.sshd.server.SshServer
-import java.security.Security
+import org.apache.sshd.server.auth.password.PasswordAuthenticator
+import org.apache.sshd.server.session.ServerSession
+import org.apache.sshd.server.shell.ProcessShellFactory
 import org.bouncycastle.jce.provider.BouncyCastleProvider
+import java.nio.file.Paths
+import java.security.Security
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import java.nio.file.Paths
 
 object SshServer {
     private val TAG = "SshServer"
@@ -28,7 +30,15 @@ object SshServer {
         server.port = 22222
 
         server.keyPairProvider = BouncyCastleGeneratorHostKeyProvider(Paths.get(serverKeyPath))
-        //server.keyPairProvider = FileKeyPairProvider()
+        //server.keyPairProvider = FileKeyPairProvider(Paths.get(serverKeyPath))
+
+        // シェルに何らかの設定が必要（まだ不明）
+        server.shellFactory = ProcessShellFactory()
+
+        server.passwordAuthenticator =
+            PasswordAuthenticator { username: String, password: String, session: ServerSession? ->
+                true
+            }
 
         val asyncProgress = SshServerStartTask(server)
         asyncProgress.execute()
