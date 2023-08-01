@@ -33,7 +33,7 @@ object SshServer {
         //server.keyPairProvider = FileKeyPairProvider(Paths.get(serverKeyPath))
 
         // シェルに何らかの設定が必要（まだ不明）
-        server.shellFactory = ProcessShellFactory()
+        server.shellFactory = ProcessShellFactory("/bin/sh", listOf("/bin/sh", "-i", "-l"))
 
         server.passwordAuthenticator =
             PasswordAuthenticator { username: String, password: String, session: ServerSession? ->
@@ -56,7 +56,7 @@ object SshServer {
                 catch (e:Exception){
                     Log.d(TAG, "ssh server start fail")
                     Log.d(TAG, e.printStackTrace().toString())
-                    server.close()
+                    server.stop(true)
                 }
                 Handler(Looper.getMainLooper())
             }
