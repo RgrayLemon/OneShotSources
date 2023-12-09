@@ -1,0 +1,25 @@
+﻿<Window x:Class="KeyBindingTest.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyBindingTest"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!--①.xaml側にInputBindingsを記載。こちらもGestureで指定できない組み合わせがある-->
+    <!--<Window.InputBindings>
+        <KeyBinding Gesture="Shift+Enter" Command="{Binding Command}"/>
+    </Window.InputBindings>-->
+    <Grid>
+        <TextBlock VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   FontSize="50"
+                   Background="DarkCyan"
+                   Foreground="White"
+                   Width="250"
+                   Visibility="Visible"
+                   Text="{Binding DisplayText.Value}"/>
+    </Grid>
+</Window>
