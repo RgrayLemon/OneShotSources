@@ -45,7 +45,7 @@ namespace KeyBindingTest.Views
             // this.KeyDown += Window_OnKeyDown;
 
             // 設定ファイルを読み込んで
-            //XDocument doc = XDocument.Load(@"C:\Users\hktst\Desktop\shortcut.xml");
+            //XDocument doc = XDocument.Load(@"shortcut.xml");
             //foreach (var element in doc.Root.Elements())
             //{
             //    var key = element.Attribute("Key").Value;
