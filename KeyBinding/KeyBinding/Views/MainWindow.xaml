@@ -9,9 +9,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <!--①.xaml側にInputBindingsを記載。こちらもGestureで指定できない組み合わせがある-->
-    <!--<Window.InputBindings>
-        <KeyBinding Gesture="Shift+Enter" Command="{Binding Command}"/>
-    </Window.InputBindings>-->
+    <Window.InputBindings>
+        <!-- Keyオプションでキーを指定 -->
+        <!--<KeyBinding Key="H" Command="{Binding Command}"/>-->
+        
+        <!-- ModifierKeyも指定 -->
+        <KeyBinding Key="H" Modifiers="Shift" Command="{Binding Command}"/>
+        
+        <!-- ModifierKeyを複数指定したい場合 -->
+        <!--<KeyBinding Key="H" Modifiers="Alt+Shift" Command="{Binding Command}"/>-->
+        
+        <!-- Gestureで指定できるケースもある -->
+        <!--<KeyBinding Gesture="Shift+Enter" Command="{Binding Command}"/>-->
+    </Window.InputBindings>
     <Grid>
         <TextBlock VerticalAlignment="Center"
                    TextAlignment="Center"
